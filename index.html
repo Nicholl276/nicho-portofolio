@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicho Kurnia Adi Nugroho | Web Developer & UI/UX Designer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <!-- Background Music Floating Widget -->
+    <div class="music-widget">
+        <audio id="bg-music" loop>
+            <source src="assets/music/rubrk.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <button id="music-toggle-btn" title="Toggle Background Music" aria-label="Toggle Music">
+            <i class="fa-solid fa-music"></i>
+            <span class="music-wave">
+                <span></span><span></span><span></span>
+            </span>
+        </button>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">Nicho Kurnia<span class="text-primary">.</span></a>
+            <div class="d-flex align-items-center gap-3">
+                <button id="dark-mode-toggle" class="btn-theme-toggle d-lg-none" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-lg-3 py-3 py-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <button id="dark-mode-toggle-desktop" class="btn-theme-toggle d-none d-lg-flex" aria-label="Toggle Theme">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7 order-2 order-lg-1">
+                    <div class="hero-content">
+                        <div class="badge-custom mb-3 animate-up">
+                            <span>Hello, I'm</span>
+                        </div>
+                        <h1 class="display-4 fw-bold mb-3 animate-up delay-1">
+                            NICHO KURNIA ADI NUGROHO
+                        </h1>
+                        <h2 class="h4 text-muted fw-semibold mb-4 animate-up delay-2">
+                            <span class="typed-text"></span><span class="cursor">|</span>
+                        </h2>
+                        <p class="lead text-secondary mb-4 animate-up delay-3">
+                            Mahasiswa Teknik Informatika UDINUS yang berfokus pada pengembangan produk digital, UI/UX, dan Fullstack Web Development.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3 animate-up delay-4">
+                            <a href="#projects" class="btn btn-dark btn-pill px-4 py-3">View My Work</a>
+                            <a href="assets/cv nicho.pdf" class="btn btn-outline-dark btn-pill px-4 py-3">Download CV</a>
+                        </div>
+                        <div class="social-icons mt-5 animate-up delay-5 d-flex gap-3">
+                            <a href="https://github.com/Nicholl276" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/nicho-kurnia-adi/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/nichokuradgrh_?stkn=MWludnluY2cxZGg5Yg==" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://wa.me/6281770570013" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 order-1 order-lg-2 text-center">
+                    <div class="hero-image-wrapper animate-zoom">
+                        <div class="hero-blob"></div>
+                        <img src="assets/image/profil.jpg" alt="Profile Image" class="img-fluid rounded-4 shadow-lg profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-5">
+        <div class="container py-lg-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-6 mx-auto">
+                    <span class="badge-section mb-2">Get To Know Me</span>
+                    <h2 class="fw-bold display-5">About Me</h2>
+                    <div class="divider mx-auto mt-2"></div>
+                </div>
+            </div>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <div class="about-img-box position-relative">
+                        <img src="assets/image/belakang.jpeg" alt="About Image" class="img-fluid rounded-4 shadow">
+                        <div class="experience-badge shadow">
+                            <span class="number">2+</span>
+                            <span class="text">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="about-content">
+                        <h3 class="fw-bold mb-3">Junior Developer</h3>
+                        <p class="text-secondary mb-4">
+                            Saya Nicho Kurnia Adi Nugroho, mahasiswa Teknik Informatika di Universitas Dian Nuswantoro (UDINUS). Saya memiliki pengalaman di bidang UI/UX Design, Fullstack Development, SEO, Videografi, dan Graphic Design. Kombinasi antara kemampuan teknis dan kreativitas membuat saya tertarik menciptakan solusi digital yang fungsional dan estetis.
+                        </p>
+                        <div class="row g-3 mb-4">
+                            <div class="col-sm-6">
+                                <ul class="list-unstyled mb-0 info-list">
+                                    <li><strong>Pendidikan:</strong> Universitas Dian Nuswantoro</li>
+                                    <li><strong>Jurusan:</strong> Teknik Informatika</li>
+                                    <li><strong>Lokasi:</strong> Semarang Selatan, Jawa Tengah</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <ul class="list-unstyled mb-0 info-list">
+                                    <li><strong>Email:</strong> nichokurniaadinugroho@gmail.com</li>
+                                    <li><strong>Phone:</strong> +62 817-7057-0013</li>
+                                    <li><strong>Status:</strong> Active Student</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row text-center g-3 pt-3 border-top">
+                            <div class="col-6 col-md-3">
+                                <div class="stat-card p-3 rounded-3">
+                                    <h3 class="fw-bold counter" data-target="10">0</h3>
+                                    <p class="text-muted mb-0 small">Projects</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-card p-3 rounded-3">
+                                    <h3 class="fw-bold counter" data-target="2">0</h3>
+                                    <p class="text-muted mb-0 small">Years Exp</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-card p-3 rounded-3">
+                                    <h3 class="fw-bold counter" data-target="6">0</h3>
+                                    <p class="text-muted mb-0 small">Technologies</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-card p-3 rounded-3">
+                                    <h3 class="fw-bold counter" data-target="100">0</h3>
+                                    <p class="text-muted mb-0 small">Passion %</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 bg-light-subtle">
+        <div class="container py-lg-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-6 mx-auto">
+                    <span class="badge-section mb-2">My Expertise</span>
+                    <h2 class="fw-bold display-5">Professional Skills</h2>
+                    <div class="divider mx-auto mt-2"></div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-3"><i class="fa-solid fa-code"></i></div>
+                        <h4 class="h5 fw-bold mb-3">Frontend & UI/UX</h4>
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-1"><span>UI/UX Design (Figma)</span><span>90%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-1"><span>Frontend (PHP, JS, WordPress)</span><span>88%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 88%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="d-flex justify-content-between mb-1"><span>Website Developer (VS Code)</span><span>85%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-3"><i class="fa-solid fa-server"></i></div>
+                        <h4 class="h5 fw-bold mb-3">Backend & Data</h4>
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-1"><span>Backend & Database (SQL)</span><span>85%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-1"><span>Data Analyst</span><span>80%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="d-flex justify-content-between mb-1"><span>SEO Junior Strategy</span><span>82%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 82%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-3"><i class="fa-solid fa-video"></i></div>
+                        <h4 class="h5 fw-bold mb-3">Creative & Media</h4>
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-1"><span>Videografer</span><span>85%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item mb-3">
+                            <div class="d-flex justify-content-between mb-1"><span>Admin Medsos</span><span>90%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="d-flex justify-content-between mb-1"><span>Graphic Design</span><span>70%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="experience" class="py-5">
+        <div class="container py-lg-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-6 mx-auto">
+                    <span class="badge-section mb-2">Path So Far</span>
+                    <h2 class="fw-bold display-5">Experience & Education</h2>
+                    <div class="divider mx-auto mt-2"></div>
+                </div>
+            </div>
+            <div class="row g-5">
+                <!-- Timeline Experience -->
+                <div class="col-lg-6">
+                    <h3 class="h4 fw-bold mb-4"><i class="fa-solid fa-briefcase text-primary me-2"></i> Experience</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content p-4 rounded-4 shadow-sm">
+                                <span class="badge bg-primary-subtle text-primary mb-2">Januari 2025 - September 2025</span>
+                                <h4 class="h5 fw-bold">Web Developer & SEO Staff</h4>
+                                <h6 class="text-muted mb-2">PT SINERGI MANAJEMEN INDONESIA</h6>
+                                <p class="text-secondary small mb-0">Membuat desain website di Figma, menyusun artikel WordPress, membangun website via VS Code, serta menentukan optimasi SEO & keyword.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content p-4 rounded-4 shadow-sm">
+                                <span class="badge bg-primary-subtle text-primary mb-2">April 2026 - Agustus 2026</span>
+                                <h4 class="h5 fw-bold">Videografer & Admin Medsos</h4>
+                                <h6 class="text-muted mb-2">Pandora Box</h6>
+                                <p class="text-secondary small mb-0">Bertanggung jawab sebagai videografer dan mengelola media sosial.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Timeline Education -->
+                <div class="col-lg-6">
+                    <h3 class="h4 fw-bold mb-4"><i class="fa-solid fa-graduation-cap text-primary me-2"></i> Education</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content p-4 rounded-4 shadow-sm">
+                                <span class="badge bg-primary-subtle text-primary mb-2">2026 - Present</span>
+                                <h4 class="h5 fw-bold">Universitas Dian Nuswantoro (UDINUS)</h4>
+                                <h6 class="text-muted mb-2">S1 Teknik Informatika</h6>
+                                <p class="text-secondary small mb-0">Menempuh perkuliahan aktif di program studi Teknik Informatika.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content p-4 rounded-4 shadow-sm">
+                                <span class="badge bg-primary-subtle text-primary mb-2">2023 - 2026</span>
+                                <h4 class="h5 fw-bold">SMK Negeri 9 Semarang</h4>
+                                <h6 class="text-muted mb-2">Pengembangan Perangkat Lunak dan Gim (RPL)</h6>
+                                <p class="text-secondary small mb-0">Mempelajari fundamental pemrograman, database, dan perancangan perangkat lunak.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content p-4 rounded-4 shadow-sm">
+                                <span class="badge bg-primary-subtle text-primary mb-2">2020 - 2023</span>
+                                <h4 class="h5 fw-bold">SMP Negeri 39 Semarang</h4>
+                                <h6 class="text-muted mb-2">Pendidikan Menengah Pertama</h6>
+                                <p class="text-secondary small mb-0">Pendidikan dasar menengah pertama.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (Foto & Deskripsi) -->
+    <section id="projects" class="py-5 bg-light-subtle">
+        <div class="container py-lg-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-6 mx-auto">
+                    <span class="badge-section mb-2">Portfolio</span>
+                    <h2 class="fw-bold display-5">Featured Projects</h2>
+                    <div class="divider mx-auto mt-2"></div>
+                </div>
+            </div>
+            <!-- Project Grid -->
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card rounded-4 overflow-hidden shadow-sm h-100 bg-white">
+                        <div class="project-img-wrapper overflow-hidden position-relative">
+                            <img src="assets/image/figma.png" alt="Project 1" class="img-fluid w-100">
+                        </div>
+                        <div class="p-4">
+                            <span class="badge bg-primary-subtle text-primary mb-2">Figma & WordPress</span>
+                            <h3 class="h5 fw-bold mb-2">Company Website & UI Mockup</h3>
+                            <p class="text-secondary small mb-0">Perancangan UI/UX antarmuka menggunakan Figma serta manajemen konten website perusahaan berbasis WordPress.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card rounded-4 overflow-hidden shadow-sm h-100 bg-white">
+                        <div class="project-img-wrapper overflow-hidden position-relative">
+                            <img src="assets/image/php.png" alt="Project 2" class="img-fluid w-100">
+                        </div>
+                        <div class="p-4">
+                            <span class="badge bg-primary-subtle text-primary mb-2">PHP & VS Code</span>
+                            <h3 class="h5 fw-bold mb-2">Web App Development</h3>
+                            <p class="text-secondary small mb-0">Pengembangan sistem aplikasi web interaktif dengan implementasi basis data relasional SQL.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card rounded-4 overflow-hidden shadow-sm h-100 bg-white">
+                        <div class="project-img-wrapper overflow-hidden position-relative">
+                            <img src="assets/image/seo.png" alt="Project 3" class="img-fluid w-100">
+                        </div>
+                        <div class="p-4">
+                            <span class="badge bg-primary-subtle text-primary mb-2">SEO & Copywriting</span>
+                            <h3 class="h5 fw-bold mb-2">SEO Keyword Optimization</h3>
+                            <p class="text-secondary small mb-0">Riset keyword strategis dan penulisan artikel SEO friendly untuk mendongkrak visibilitas website.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-5">
+        <div class="container py-lg-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-6 mx-auto">
+                    <span class="badge-section mb-2">Credentials</span>
+                    <h2 class="fw-bold display-5">Certificates & Awards</h2>
+                    <div class="divider mx-auto mt-2"></div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card p-4 rounded-4 shadow-sm h-100 bg-white border">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-box me-3"><i class="fa-solid fa-trophy text-warning"></i></div>
+                            <div>
+                                <span class="badge bg-primary-subtle text-primary mb-1">Award</span>
+                                <h4 class="h6 fw-bold mb-0">Juara 2 FusionTech Challenge UTY</h4>
+                            </div>
+                        </div>
+                        <p class="text-secondary small mb-3">Penghargaan prestasi tingkat nasional dalam ajang kompetisi teknologi dan inovasi.</p>
+                        <a href="/assets/image/juara.jpeg" class="btn btn-sm btn-outline-dark rounded-pill px-3">View Credential <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4">
+                    <div class="cert-card p-4 rounded-4 shadow-sm h-100 bg-white border">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-box me-3"><i class="fa-solid fa-medal text-success"></i></div>
+                            <div>
+                                <span class="badge bg-primary-subtle text-primary mb-1">Udemy</span>
+                                <h4 class="h6 fw-bold mb-0">Sertifikat Udemy Front-End Web Dev</h4>
+                            </div>
+                        </div>
+                        <p class="text-secondary small mb-3">Penyelesaian kursus profesional pengembangan front-end website modern.</p>
+                        <a href="assets/image/udemy1.jpeg" class="btn btn-sm btn-outline-dark rounded-pill px-3">View Credential <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card p-4 rounded-4 shadow-sm h-100 bg-white border">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="icon-box me-3"><i class="fa-solid fa-medal text-success"></i></div>
+                            <div>
+                                <span class="badge bg-primary-subtle text-primary mb-1">Udemy</span>
+                                <h4 class="h6 fw-bold mb-0">Sertifikat Udemy SEO Strategy</h4>
+                            </div>
+                        </div>
+                        <p class="text-secondary small mb-3">Sertifikasi strategi optimasi mesin pencari dan riset keyword komprehensif.</p>
+                        <a href="assets/image/udemy2.jpeg" class="btn btn-sm btn-outline-dark rounded-pill px-3">View Credential <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light-subtle">
+        <div class="container py-lg-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-6 mx-auto">
+                    <span class="badge-section mb-2">What I Offer</span>
+                    <h2 class="fw-bold display-5">My Services</h2>
+                    <div class="divider mx-auto mt-2"></div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-3"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h4 class="h5 fw-bold mb-2">Web Development</h4>
+                        <p class="text-secondary small mb-0">Membangun website responsif dan fungsional menggunakan PHP, VS Code, dan WordPress sesuai kebutuhan Anda.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-3"><i class="fa-solid fa-compass-drafting"></i></div>
+                        <h4 class="h5 fw-bold mb-2">UI/UX Design</h4>
+                        <p class="text-secondary small mb-0">Merancang tata letak dan mockup antarmuka web yang modern serta ramah pengguna menggunakan Figma.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-3"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <h4 class="h5 fw-bold mb-2">SEO & Content</h4>
+                        <p class="text-secondary small mb-0">Melakukan riset keyword strategis, optimasi SEO on-page, dan penulisan artikel untuk website.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-3"><i class="fa-solid fa-database"></i></div>
+                        <h4 class="h5 fw-bold mb-2">Database Design</h4>
+                        <p class="text-secondary small mb-0">Merancang struktur database relasional menggunakan SQL dan manajemen data yang rapi.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-3"><i class="fa-solid fa-video"></i></div>
+                        <h4 class="h5 fw-bold mb-2">Videography & Media</h4>
+                        <p class="text-secondary small mb-0">Layanan videografi profesional serta pengelolaan media sosial (Admin Medsos) yang interaktif.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card p-4 rounded-4 shadow-sm h-100">
+                        <div class="icon-box mb-3"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h4 class="h5 fw-bold mb-2">Data Analysis</h4>
+                        <p class="text-secondary small mb-0">Mengolah dan menganalisis data untuk mendukung pengambilan keputusan proyek digital.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (LinkedIn, Instagram, WhatsApp) -->
+    <section id="contact" class="py-5">
+        <div class="container py-lg-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-6 mx-auto">
+                    <span class="badge-section mb-2">Get In Touch</span>
+                    <h2 class="fw-bold display-5">Contact Me</h2>
+                    <div class="divider mx-auto mt-2"></div>
+                    <p class="text-secondary mt-3">Tertarik berkolaborasi atau ingin berdiskusi? Hubungi saya langsung melalui tautan di bawah ini.</p>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- WhatsApp Card -->
+                <div class="col-md-4">
+                    <a href="https://wa.me/6281770570013" target="_blank" class="contact-social-card p-4 rounded-4 shadow-sm d-block text-decoration-none text-center bg-white border">
+                        <div class="social-icon-large mx-auto mb-3 text-success">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <h3 class="h5 fw-bold text-dark mb-1">WhatsApp</h3>
+                        <p class="text-muted small mb-3"></p>
+                        <span class="btn btn-sm btn-dark rounded-pill px-4">Chat Now <i class="fa-solid fa-arrow-right ms-1"></i></span>
+                    </a>
+                </div>
+                <!-- LinkedIn Card -->
+                <div class="col-md-4">
+                    <a href="https://www.linkedin.com/in/nicho-kurnia-adi/" target="_blank" class="contact-social-card p-4 rounded-4 shadow-sm d-block text-decoration-none text-center bg-white border">
+                        <div class="social-icon-large mx-auto mb-3 text-primary">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <h3 class="h5 fw-bold text-dark mb-1">LinkedIn</h3>
+                        <p class="text-muted small mb-3"></p>
+                        <span class="btn btn-sm btn-dark rounded-pill px-4">Connect <i class="fa-solid fa-arrow-right ms-1"></i></span>
+                    </a>
+                </div>
+                <!-- Instagram Card -->
+                <div class="col-md-4">
+                    <a href="https://www.instagram.com/nichokuradgrh_?stkn=MWludnluY2cxZGg5Yg==" target="_blank" class="contact-social-card p-4 rounded-4 shadow-sm d-block text-decoration-none text-center bg-white border">
+                        <div class="social-icon-large mx-auto mb-3 text-danger">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <h3 class="h5 fw-bold text-dark mb-1">Instagram</h3>
+                        <p class="text-muted small mb-3"></p>
+                        <span class="btn btn-sm btn-dark rounded-pill px-4">Follow <i class="fa-solid fa-arrow-right ms-1"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
