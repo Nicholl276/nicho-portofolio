@@ -1,0 +1,877 @@
+/* =========================================
+   CSS Variables & Theme Settings
+   ========================================= */
+:root {
+    --bg-color: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-color: #111111;
+    --text-muted: #6c757d;
+    --accent-color: #0d6efd;
+    --accent-hover: #0b5ed7;
+    --card-bg: #ffffff;
+    --border-color: #e9ecef;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --bg-color: #0b0f19;
+    --bg-secondary: #121826;
+    --text-color: #f8f9fa;
+    --text-muted: #94a3b8;
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+    --card-bg: #161e31;
+    --border-color: #1e293b;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   General & Reset Styles
+   ========================================= */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+::selection {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+/* =========================================
+   Loading Screen
+   ========================================= */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* =========================================
+   Scroll Progress Bar
+   ========================================= */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent-color);
+    width: 0%;
+    z-index: 10000;
+    transition: width 0.1s ease;
+}
+
+/* =========================================
+   Custom Cursor
+   ========================================= */
+@media (min-width: 992px) {
+    body {
+        cursor: default;
+    }
+    .custom-cursor {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background-color: var(--accent-color);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10001;
+        transition: transform 0.1s ease;
+        transform: translate(-50%, -50%);
+    }
+    .custom-cursor-follower {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--accent-color);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transition: transform 0.15s ease, opacity 0.2s ease;
+        transform: translate(-50%, -50%);
+        opacity: 0.6;
+    }
+}
+
+/* =========================================
+   Floating Widgets (Music & Back to Top)
+   ========================================= */
+.music-widget {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 999;
+}
+
+#music-toggle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+#music-toggle-btn:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+}
+
+.music-wave {
+    display: none;
+    gap: 2px;
+    position: absolute;
+    bottom: 12px;
+}
+
+.music-wave span {
+    display: block;
+    width: 3px;
+    height: 10px;
+    background-color: currentColor;
+    animation: wave 0.6s infinite alternate;
+}
+
+.music-wave span:nth-child(2) { animation-delay: 0.2s; }
+.music-wave span:nth-child(3) { animation-delay: 0.4s; }
+
+.playing .music-wave {
+    display: flex;
+}
+.playing i {
+    opacity: 0;
+}
+
+@keyframes wave {
+    0% { height: 4px; }
+    100% { height: 16px; }
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+#back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#back-to-top:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+}
+
+/* =========================================
+   Navbar Styles
+   ========================================= */
+.navbar {
+    background: transparent;
+    transition: var(--transition);
+    padding: 20px 0;
+}
+
+.navbar.scrolled {
+    background: var(--bg-color);
+    box-shadow: var(--shadow);
+    padding: 12px 0;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--text-color) !important;
+}
+
+.nav-link {
+    color: var(--text-color) !important;
+    font-weight: 500;
+    position: relative;
+    padding: 8px 12px !important;
+    transition: var(--transition);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.btn-theme-toggle {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-theme-toggle:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero-section {
+    min-height: 100vh;
+    padding-top: 100px;
+}
+
+.badge-custom {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.badge-section {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-pill {
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-dark {
+    background-color: var(--text-color);
+    border-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.btn-dark:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #ffffff;
+}
+
+.btn-outline-dark {
+    color: var(--text-color);
+    border-color: var(--border-color);
+    background: var(--card-bg);
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--text-color);
+    border-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.hero-image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-blob {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: linear-gradient(135deg, var(--accent-color), transparent);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    z-index: -1;
+    opacity: 0.2;
+    animation: morph 8s ease-in-out infinite;
+}
+
+@keyframes morph {
+    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+    100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+}
+
+/* Styling Default untuk Desktop / Laptop */
+.profile-img {
+    max-width: 300px;
+    height: 400px;
+    width: 100%;
+    object-fit: contain;     /* Menampilkan foto secara utuh tanpa terpotong */
+    background-color: var(--bg-secondary); /* Memberikan latar belakang selaras */
+    border-radius: 1.5rem;
+}
+
+/* Styling Khusus untuk Tablet dan Smartphone (Layar kecil) */
+@media (max-width: 991.98px) {
+    .profile-img {
+        max-width: 220px;    /* Ukuran lebar lebih kecil di HP agar proporsional */
+        height: 300px;       /* Tinggi disesuaikan untuk layar HP */
+        margin: 0 auto;      /* Otomatis berada di tengah */
+    }
+}
+/* =========================================
+   About Section
+   ========================================= */
+.divider {
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* =========================================
+   Perbaikan Ukuran Foto About Me
+   ========================================= */
+/* =========================================
+   Efek Hover Modern & Elegan untuk Foto About Me
+   ========================================= */
+.about-img-box {
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.about-img-box img {
+    max-width: 100%;
+    height: 380px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1.25rem;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s ease;
+}
+
+/* Bingkai cahaya gradasi tipis di sekeliling foto */
+.about-img-box::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--accent-color), transparent, var(--accent-color));
+    border-radius: 1.35rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Ketika foto disentuh / di-hover */
+.about-img-box:hover {
+    transform: translateY(-8px);
+}
+
+.about-img-box:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.05) contrast(1.05);
+}
+
+.about-img-box:hover::before {
+    opacity: 0.8;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 991.98px) {
+    .about-img-box img {
+        height: 300px;
+    }
+}
+
+/* =========================================
+   Efek Glitch Modern pada Experience Badge
+   ========================================= */
+/* =========================================
+   Perbaikan Box & Efek Modern Experience Badge
+   ========================================= */
+.experience-badge {
+    position: absolute;
+    bottom: -25px;
+    right: -25px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 18px 24px;
+    border-radius: 1.25rem;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    animation: badgeFloat 4s ease-in-out infinite;
+    z-index: 2;
+}
+
+.experience-badge .number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    line-height: 1.1;
+    position: relative;
+    letter-spacing: -1px;
+    animation: neonPulse 2s infinite alternate;
+}
+
+.experience-badge .text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Efek Animasi Baru: Neon Pulse & Shift yang Bersih */
+@keyframes neonPulse {
+    0% {
+        text-shadow: 0 0 5px rgba(13, 110, 253, 0.1), 0 0 10px rgba(13, 110, 253, 0.1);
+        transform: scale(1);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(13, 110, 253, 0.3), 0 0 25px rgba(13, 110, 253, 0.2);
+        transform: scale(1.03);
+    }
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Penyesuaian Responsif untuk HP */
+@media (max-width: 991.98px) {
+    .experience-badge {
+        bottom: -15px;
+        right: 15px;
+        padding: 12px 18px;
+    }
+    .experience-badge .number {
+        font-size: 1.6rem;
+    }
+}
+.info-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 0.95rem;
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+.stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.stat-card h3 {
+    color: var(--accent-color);
+}
+
+/* =========================================
+   Skills Section
+   ========================================= */
+.bg-light-subtle {
+    background-color: var(--bg-secondary) !important;
+}
+
+.skill-card, .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.skill-card:hover, .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-color);
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: var(--accent-color);
+}
+
+.progress {
+    height: 8px;
+    background-color: var(--bg-secondary);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--accent-color);
+    border-radius: 4px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* =========================================
+   Experience & Education Timeline
+   ========================================= */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -30px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    border: 3px solid var(--accent-color);
+}
+
+.timeline-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.timeline-content:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-color);
+}
+
+/* =========================================
+   Projects Section
+   ========================================= */
+.project-card {
+    border: 1px solid var(--border-color);
+    background: var(--card-bg) !important;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-color);
+}
+
+.project-img-wrapper img {
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-filters .btn {
+    color: var(--text-color);
+    border-color: var(--border-color);
+    background: var(--card-bg);
+}
+
+.project-filters .btn.active,
+.project-filters .btn:hover {
+    background-color: var(--text-color);
+    border-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* =========================================
+   Contact Section
+   ========================================= */
+.contact-info-card, .contact-form-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border-color);
+}
+
+.contact-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.form-control {
+    background-color: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+.form-control:focus {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.form-floating label {
+    color: var(--text-muted);
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+footer {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+}
+
+/* =========================================
+   Responsive Breakpoints
+   ========================================= */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 1rem;
+        border: 1px solid var(--border-color);
+        margin-top: 15px;
+        box-shadow: var(--shadow);
+    }
+    .hero-section {
+        text-align: center;
+        padding-top: 120px;
+        padding-bottom: 60px;
+    }
+    .hero-content .d-flex {
+        justify-content: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}
+/* (Gunakan seluruh kode style.css sebelumnya, lalu tambahkan aturan berikut di bagian akhir:) */
+
+.cert-card, .contact-social-card {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    transition: var(--transition);
+}
+
+.cert-card:hover, .contact-social-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent-color) !important;
+}
+
+.social-icon-large {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* =========================================
+   Background Hidup & Dinamis (Interactive Mesh & Glowing Orbs)
+   ========================================= */
+
+/* Aksen grid halus di background */
+body {
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: 0 0;
+}
+
+/* Container untuk animasi cahaya background hidup */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Membuat bola cahaya gradasi hidup yang bergerak di background */
+.hero-section::before,
+.hero-section::after {
+    content: '';
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.15;
+    animation: orbFloat 10s ease-in-out infinite alternate;
+}
+
+.hero-section::before {
+    background: var(--accent-color);
+    top: -10%;
+    left: -5%;
+}
+
+.hero-section::after {
+    background: #00f2fe; /* Warna cyan/biru muda cerah sebagai aksen hidup */
+    bottom: -10%;
+    right: -5%;
+    animation-delay: -5s;
+}
+
+/* Dark mode penyesuaian opacity cahaya agar tetap estetik */
+[data-theme="dark"] .hero-section::before,
+[data-theme="dark"] .hero-section::after {
+    opacity: 0.25;
+}
+
+/* Animasi pergerakan orb cahaya */
+@keyframes orbFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, 40px) scale(1.1);
+    }
+    100% {
+        transform: translate(-20px, -30px) scale(0.95);
+    }
+}
+/* Warna teks pengetikan khusus saat Dark Mode */
+[data-theme="dark"] .hero-content h2.text-muted {
+    color: #f8f9fa !important; /* Warna putih terang khusus dark mode */
+}
